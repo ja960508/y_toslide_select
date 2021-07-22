@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="icon" href="img/yestoslide_favicon_real.png" type="image/png" sizes="16x16">
+  <link rel="stylesheet" href="login.css">
+  <title>YesToSlide</title>
+</head>
+<body>
+  <header class="header">
+    <img class="logo" src="img/yestoslide_all_logo@2x.png" alt="" width="260px" height="105px">
+    <span class="version">v.1.0.0</span>
+  </header>
+  <section class="participant">
+    <div class="orgtxt">참가자</div>
+    <div class="inputel">
+      <label class="txt" for="partimail">Gmail</label>
+        <input class="box" id="partimail" type="email" value="participant@gmail.com">
+    </div>
+    <div class="inputel">
+      <label class="txt" for="partiname">이름</label>
+      <input class="box" id="partiname" type="text" placeholder="본인 이름을 입력하세요">
+    </div>
+  </section>
+  <section class="cordinator">
+    <div class="orgtxt">진행자</div>
+    <div class="inputel">
+      <div>
+        <label class="txt" for="cordimail">Gmail</label>
+        <input class="box" id="cordimail" type="email" placeholder="진행자 Gmail을 입력하세요">
+      </div>
+      <button class="location">
+        <img src="img/pin.svg" alt="" width="16.43px" height="23.72px">
+      </button>
+      <!--<input class="location" type="button">-->
+    </div>
+  </section>
+  <section>
+    <input class="okbtn" type="button" value="확인" onClick="location.href='https://lyunjii.github.io/yestoslide/select.html'">
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="login.js" async defer></script>
+</body>
+</html>

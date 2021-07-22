@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css" integrity="sha512-+VDbDxc9zesADd49pfvz7CgsOl2xREI/7gnzcdyA9XjuTxLXrdpuz21VVIqc5HPfZji2CypSbxx1lgD7BgBK5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="img/yestoslide_favicon_real.png" type="image/png" sizes="16x16">
+  <link rel="stylesheet" href="select.css">
+  <title>YesToSlide</title>
+</head>
+<body>
+  <header class="header">
+    <img class ="logo" src="img/yestoslide_all_logo@2x.png" alt="" width="194px" height="78px">
+    <span class="version">v.1.0.0</span>
+  </header>
+  <section class="info">
+    <div class="parti user">
+      <span class="name" id="parti_name">김이름</span>
+      <span class="mail" id="parti_email">participant@gmail.com</span>
+      <button class="logoutBtn" onClick="location.href='https://lyunjii.github.io/yestoslide/login.html'">로그아웃</button>
+    </div>
+    <div class="cordi user">
+      <span class="name">진행자</span>
+      <span class="mail" id=coordi_email>cordi@gmail.com</span>
+    </div>
+  </section>
+  <section class="typeTab" width="303px">
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="tabBtn nav-link active" id="pills-photo-tab" data-bs-toggle="pill" data-bs-target="#pills-photo" 
+        type="button" role="tab" aria-controls="pills-photo" aria-selected="true">
+          <img class="iconImg black" src="img/camera.svg" alt="" width="20px" height="18px">
+          <span>사진</span>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="tabBtn nav-link" id="pills-vote-tab" data-bs-toggle="pill" data-bs-target="#pills-vote" 
+        type="button" role="tab" aria-controls="pills-vote" aria-selected="false">
+          <img class="iconImg" src="img/vote_white.svg" alt="" width="23px" height="23px">
+          <span>투표</span>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="tabBtn nav-link" id="pills-show-tab" data-bs-toggle="pill" data-bs-target="#pills-show" 
+        type="button" role="tab" aria-controls="pills-show" aria-selected="false">
+          <img class="iconImg" src="img/view_icon.svg" alt="" width="21px" height="16.8px">
+          <span>보기</span>
+        </button>
+      </li>
+    </ul>
+  </section>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane show active" id="pills-photo" role="tabpanel" aria-labelledby="pills-photo-tab">
+      <section class="orangebox picture">
+        <div class="upPicBox">
+          <label class="upPicLabel" for="uploadPicture">
+            <img class="upPicImg" src="img/camera.svg" alt="">
+            <div class="upTxt">사진 업로드 하기</div>
+          </label>
+          <input class="d-none" type="file" name="uploadPicture" id="uploadPicture" 
+          accept="image/*, ;capture=camera" onclick="this.value=null;" onchange="load_image(this)">
+        </div>
+        <div class="showPic"></div>
+        <div class="result"></div>
+        <div class="editBtn">
+          <img src="img/X_icon.svg" alt="" onclick="cancelUpload()">
+          <img id="toggleBtn" src="img/toggle_grid_on@3x.png" alt="" value="on" onclick="toggle_cropper()">
+          <img src="img/left_rotate.svg" alt="" onclick="rotateLeft()">
+          <img src="img/right_rotate.svg" alt="" onclick="rotateRight()">
+          <img src="img/undo_button.svg" alt="" onclick="undo()">
+          <img src="img/check_button.svg" alt="" onclick="get_image()">
+        </div>
+      </section>
+      <section class="option">
+        <input id="msgBox" class="msgBox" type="text" placeholder="최대 30자 메시지 입력" autocomplete = "off">
+      </section>
+      <section class="option">
+        <button class="sendBtn" onclick="upload_image()">
+          <img class="sendIcon" src="img/send_icon.png" alt="" width="20.65px" height="21px">
+          <span>보내기</span>
+        </button>
+      </section>
+    </div>
+    <div class="tab-pane" id="pills-vote" role="tabpanel" aria-labelledby="pills-vote-tab">
+      <section class="orangebox">
+        <ul class="voteList zoom" id="voteList">
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">첫번째</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">두번째</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">세번째</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+          
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">네번째</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+          
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">다섯번째</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">여섯번째</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">일곱번째</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+          <li class="voteElement">
+            <div class="voteImage">
+              <img src="img/profile_img.jpg" alt="">
+            </div>
+            <div class="imageInfo">
+              <img class="image_user" src="img/profile_img.jpg" alt="">
+              <div>
+                <div class="image_comment">30자 코멘트</div>
+                <div class="image_name">마지막</div>
+              </div>
+            </div>
+            <div class="voteScroll"></div>
+            <label class="form-check-label" for="image_vote">
+            <input class="form-check-input shadow-none" type="checkbox" value="" id="image_vote">
+          </li>
+
+        </ul>
+
+      </section>
+    </div>
+    <div class="tab-pane" id="pills-show" role="tabpanel" aria-labelledby="pills-show-tab">
+      <section class="orangebox">
+        <span class="showTxt">
+          진행자가 사진을 공유하면
+          <br>
+          이 화면에서 볼 수 있습니다.
+        </span>
+      </section>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js" integrity="sha512-ZK6m9vADamSl5fxBPtXw6ho6A4TuX89HUbcfvxa2v2NYNT/7l8yFGJ3JlXyMN4hlNbz0il4k6DvqbIW5CCwqkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js" integrity="sha512-qRj8N7fxOHxPkKjnQ9EJgLJ8Ng1OK7seBn1uk8wkqaXpa7OA13LO6txQ7+ajZonyc9Ts4K/ugXljevkFTUGBcw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="select.js" async defer></script>
+  <script src="select_pinch.js" async defer></script>
+
+  <canvas id="Canvas1"   width="1463" height="823" style="border:0px solid;display: none;">
+  </canvas>
+  <canvas id="Canvas2"   width="1463" height="823" style="border:0px solid;display: none;">
+  </canvas>
+  <canvas id="originalCanvas" width="1463" height="823" style="border:0px solid;display: none;">
+  </canvas>
+  <canvas id="thumbnail"   width="343" height="191" style="border:0px solid;display: none;">
+  </canvas>
+</body>
+</html>

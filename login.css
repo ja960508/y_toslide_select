@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "NanumSquareRound";
+  font-weight: bold;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fafbfc;
+}
+/*   title bar   */
+.version {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: lighter;
+  position: absolute;
+  bottom: 7px;
+  right: -40px;
+}
+header {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  position: relative;
+  padding-bottom: 7px;
+}
+/*   user input   */
+.participant,
+.cordinator {
+  padding-bottom: 34px;
+}
+.inputel {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.inputel div {
+  display: flex;
+  align-items: center;
+}
+.orgtxt {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #ff8836;
+  margin-bottom: 15px;
+}
+.txt {
+  width: 51px;
+  font-size: 16px;
+  display: inline-block;
+}
+.box {
+  width: 251px;
+  height: 37px;
+  border: 1px solid #c9c9c9;
+  border-radius: 18px;
+  font-size: 14px;
+  font-weight: lighter;
+  color: #717171;
+  padding-left: 10px;
+}
+#partimail {
+  color: black;
+}
+#cordimail {
+  width: 206px;
+}
+.location {
+  width: 37px;
+  height: 37px;
+  margin-left: 7px;
+  background-color: #ffffff;
+  border: 1px solid #c9c9c9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*   ok button   */
+.okbtn {
+  width: 302px;
+  height: 41px;
+  background-color: #ff8836;
+  font-size: 18px;
+  font-weight: bolder;
+  color: #ffffff;
+  border: none;
+  border-radius: 21px;
+  padding-top: 5px;
+}
