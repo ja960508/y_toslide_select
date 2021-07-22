@@ -28,11 +28,11 @@ function pointermove_handler(ev) {
     if (prevDiff > 0) {
       if (curDiff > prevDiff) {
         // Zoom in(두 점이 멀어질 때) 발생하는 이벤트
-        voteList.classList.add('zoom');
+        !voteList.classList.contains('add') && voteList.classList.add('zoom');
       }
       if (curDiff < prevDiff) {
         // Zoom out시 발생하는 이벤트
-        voteList.classList.remove('zoom');
+        voteList.classList.contains('add') && voteList.classList.remove('zoom');
       }
     }
 
