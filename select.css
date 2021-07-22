@@ -319,6 +319,7 @@ ul {
 }
 
 /* pinch event styling */
+
 .voteList.zoom > .voteElement {
   width: 166px;
   height: 130px;
