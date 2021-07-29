@@ -1,8 +1,7 @@
 // Global vars to cache event state
 const evCache = new Array();
 let prevDiff = -1;
-const outLimitValue = 120;
-const inLimitValue = 30;
+let pinchValidCheck = true;
 const output = document.querySelector('.output');
 
 function pointerdown_handler(ev) {
@@ -28,19 +27,20 @@ function pointermove_handler(ev) {
   if (evCache.length == 2) {
     // 두 점의 거리를 계산한다.
     const curDiff = Math.abs(evCache[0].clientX - evCache[1].clientX);
+    pinchValidCheck ? (prevDiff = curDiff) : (prevDiff = prevDiff);
+    pinchValidCheck = false;
 
-    if (curDiff > prevDiff) {
+    if (curDiff > prevDiff && curDiff - prevDiff > 20) {
       // Zoom in(두 점이 멀어질 때) 발생하는 이벤트
       !voteList.classList.contains('zoom') && voteList.classList.add('zoom');
     }
-    if (curDiff < prevDiff) {
+    if (curDiff < prevDiff && prevDiff - curDiff > 20) {
       // Zoom out시 발생하는 이벤트
       voteList.classList.contains('zoom') && voteList.classList.remove('zoom');
     }
     output.innerHTML += `curDiff: ${curDiff} <br/> prevDiff: ${prevDiff} <br/>`;
 
     // Cache the distance for the next move event
-    prevDiff = curDiff;
   }
 }
 
@@ -53,7 +53,7 @@ function dt() {
 function pointerup_handler(ev) {
   //   이벤트를 제거하여 cache를 초기화시킨다.
   remove_event(ev);
-
+  pinchValidCheck = false;
   // If the number of pointers down is less than two then reset diff tracker
   if (evCache.length < 2) prevDiff = -1;
 }
