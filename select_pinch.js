@@ -30,11 +30,11 @@ function pointermove_handler(ev) {
     pinchValidCheck ? (prevDiff = curDiff) : (prevDiff = prevDiff);
     pinchValidCheck = false;
 
-    if (curDiff > prevDiff && curDiff - prevDiff > 20) {
+    if (curDiff > prevDiff && curDiff - prevDiff > 10) {
       // Zoom in(두 점이 멀어질 때) 발생하는 이벤트
       !voteList.classList.contains('zoom') && voteList.classList.add('zoom');
     }
-    if (curDiff < prevDiff && prevDiff - curDiff > 20) {
+    if (curDiff < prevDiff && prevDiff - curDiff > 10) {
       // Zoom out시 발생하는 이벤트
       voteList.classList.contains('zoom') && voteList.classList.remove('zoom');
     }
@@ -47,6 +47,9 @@ function pointermove_handler(ev) {
 function dt() {
   const output = document.querySelector('.output');
   output.innerHTML = ``;
+  output.style.display == none
+    ? (output.style.display = block)
+    : (output.style.display = none);
 }
 
 // 손가락을 땔 때 시행하는 이벤트 handler
