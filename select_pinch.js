@@ -57,9 +57,9 @@ function pointermove_handler(ev) {
 function dt() {
   const output = document.querySelector('.output');
   output.innerHTML = ``;
-  output.style.display == none
-    ? (output.style.display = block)
-    : (output.style.display = none);
+  output.style.display === 'none'
+    ? (output.style.display = 'block')
+    : (output.style.display = 'none');
 }
 
 // 손가락을 땔 때 시행하는 이벤트 handler
