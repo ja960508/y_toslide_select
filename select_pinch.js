@@ -22,13 +22,11 @@ function pointermove_handler(ev) {
       break;
     }
   }
-
   // pointer가 두 개라면 pinch로 인식
   if (evCache.length == 2) {
     // 두 점의 거리를 계산한다.
     const curDiff = Math.sqrt(
-      Math.pow(parseInt(evCache[0].clientX - evCache[1].clientX)) +
-        Math.pow(parseInt(evCache[0].clientY - evCache[1].clientY))
+      Math.pow(parseInt(evCache[0].clientX - evCache[1].clientX))
     );
     pinchValidCheck ? (prevDiff = curDiff) : (prevDiff = prevDiff);
     pinchValidCheck = false;
