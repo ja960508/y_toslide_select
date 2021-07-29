@@ -54,6 +54,7 @@ function pointerup_handler(ev) {
   //   이벤트를 제거하여 cache를 초기화시킨다.
   remove_event(ev);
   pinchValidCheck = true;
+  output.innerHTML += `point up check: ${pinchValidCheck}`;
   // If the number of pointers down is less than two then reset diff tracker
   if (evCache.length < 2) prevDiff = -1;
 }
