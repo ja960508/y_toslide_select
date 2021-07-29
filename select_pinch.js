@@ -48,7 +48,7 @@ function pointermove_handler(ev) {
       // Zoom out시 발생하는 이벤트
       voteList.classList.contains('zoom') && voteList.classList.remove('zoom');
     }
-    output.innerHTML += `curDiff: ${curDiff} <br/> curDiffY: ${curDiffY} <br/> prevDiff: ${prevDiff} <br/>`;
+    output.innerHTML += `curDiff: ${curDiff} <br/>curDiffX: ${curDiffX} <br/>  curDiffY: ${curDiffY} <br/> prevDiff: ${prevDiff} <br/>`;
 
     // Cache the distance for the next move event
   }
