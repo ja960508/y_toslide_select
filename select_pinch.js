@@ -19,6 +19,7 @@ function pointermove_handler(ev) {
       break;
     }
   }
+  const output = document.querySelector('.output');
 
   // pointer가 두 개라면 pinch로 인식
   if (evCache.length == 2) {
@@ -35,11 +36,9 @@ function pointermove_handler(ev) {
         voteList.classList.contains('zoom') &&
           voteList.classList.remove('zoom');
       }
+      output.innerHTML += `curDiff: ${curDiff} <br/> prevDiff: ${prevDiff}`;
     }
 
-    const output = document.querySelector('.output');
-
-    output.innerHTML += curDiff + '<br/>' + prevDiff + '<br/>';
     // Cache the distance for the next move event
     prevDiff = curDiff;
   }
