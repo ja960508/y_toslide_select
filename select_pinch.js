@@ -27,8 +27,8 @@ function pointermove_handler(ev) {
   if (evCache.length == 2) {
     // 두 점의 거리를 계산한다.
     const curDiff = Math.sqrt(
-      Math.pow(evCache[0].clientX - evCache[1].clientX) +
-        Math.pow(evCache[0].clientY - evCache[1].clientY)
+      Math.pow(parseInt(evCache[0].clientX - evCache[1].clientX)) +
+        Math.pow(parseInt(evCache[0].clientY - evCache[1].clientY))
     );
     pinchValidCheck ? (prevDiff = curDiff) : (prevDiff = prevDiff);
     pinchValidCheck = false;
