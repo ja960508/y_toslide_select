@@ -52,7 +52,7 @@ function pointerup_handler(ev) {
   remove_event(ev);
 
   // If the number of pointers down is less than two then reset diff tracker
-  if (evCache.length < 2) prevDiff = -1;
+  if (evCache.length < 2) prevDiff = 20;
 }
 
 function remove_event(ev) {
