@@ -28,11 +28,11 @@ function pointermove_handler(ev) {
     // 두 점의 거리를 계산한다.
     const curDiff = Math.abs(evCache[0].clientX - evCache[1].clientX);
 
-    if (curDiff > prevDiff && curDiff > limitValue) {
+    if (curDiff > prevDiff) {
       // Zoom in(두 점이 멀어질 때) 발생하는 이벤트
       !voteList.classList.contains('zoom') && voteList.classList.add('zoom');
     }
-    if (curDiff < prevDiff && curDiff < inLimitValue) {
+    if (curDiff < prevDiff) {
       // Zoom out시 발생하는 이벤트
       voteList.classList.contains('zoom') && voteList.classList.remove('zoom');
     }
