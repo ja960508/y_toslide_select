@@ -44,6 +44,11 @@ function pointermove_handler(ev) {
   }
 }
 
+function dt() {
+  const output = document.querySelector('.output');
+  output.innerHTML = ``;
+}
+
 // 손가락을 땔 때 시행하는 이벤트 handler
 function pointerup_handler(ev) {
   //   이벤트를 제거하여 cache를 초기화시킨다.
