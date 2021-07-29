@@ -3,10 +3,12 @@ const evCache = new Array();
 let prevDiff = -1;
 const outLimitValue = 120;
 const inLimitValue = 30;
+const output = document.querySelector('.output');
 
 function pointerdown_handler(ev) {
   //    pointerdown 이벤트는 터치 반응이 시작을 알려준다.
   //    두 손가락이 터치하는 이벤트를 감지하기 위해 caching
+  output.innerHTML += `down <br/>`;
   evCache.push(ev);
 }
 
@@ -21,7 +23,6 @@ function pointermove_handler(ev) {
       break;
     }
   }
-  const output = document.querySelector('.output');
 
   // pointer가 두 개라면 pinch로 인식
   if (evCache.length == 2) {
