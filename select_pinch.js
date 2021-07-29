@@ -34,7 +34,7 @@ function pointermove_handler(ev) {
     );
 
     const curDiff = Math.floor(
-      Math.sqrt(Math.pow(curDiffX) + Math.pow(curDiffY))
+      Math.sqrt(Math.pow(curDiffX, 2) + Math.pow(curDiffY, 2))
     );
 
     pinchValidCheck ? (prevDiff = curDiff) : (prevDiff = prevDiff);
