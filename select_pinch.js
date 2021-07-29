@@ -29,7 +29,7 @@ function pointermove_handler(ev) {
     const curDiff = Math.floor(
       Math.abs(evCache[0].clientX - evCache[1].clientX)
     );
-    const currDiffY = Math.floor(
+    const curDiffY = Math.floor(
       Math.abs(evCache[0].clientY - evCache[1].clientY)
     );
     pinchValidCheck ? (prevDiff = curDiff) : (prevDiff = prevDiff);
