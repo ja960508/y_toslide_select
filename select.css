@@ -344,3 +344,8 @@ ul {
   width: 21px;
   height: 21px;
 }
+.output {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

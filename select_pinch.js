@@ -37,6 +37,9 @@ function pointermove_handler(ev) {
       }
     }
 
+    const output = document.querySelector('.output');
+
+    output.innerHTML += curDiff + '<br/>' + prevDiff + '<br/>';
     // Cache the distance for the next move event
     prevDiff = curDiff;
   }
