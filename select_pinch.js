@@ -1,6 +1,8 @@
 // Global vars to cache event state
 const evCache = new Array();
-let prevDiff = 20;
+let prevDiff = -1;
+const outLimitValue = 120;
+const inLimitValue = 30;
 
 function pointerdown_handler(ev) {
   //    pointerdown 이벤트는 터치 반응이 시작을 알려준다.
@@ -26,18 +28,18 @@ function pointermove_handler(ev) {
     // 두 점의 거리를 계산한다.
     const curDiff = Math.abs(evCache[0].clientX - evCache[1].clientX);
 
-    if (curDiff > prevDiff) {
+    if (curDiff > prevDiff && curDiff > limitValue) {
       // Zoom in(두 점이 멀어질 때) 발생하는 이벤트
       !voteList.classList.contains('zoom') && voteList.classList.add('zoom');
     }
-    if (curDiff < prevDiff) {
+    if (curDiff < prevDiff && curDiff < inLimitValue) {
       // Zoom out시 발생하는 이벤트
       voteList.classList.contains('zoom') && voteList.classList.remove('zoom');
     }
     output.innerHTML += `curDiff: ${curDiff} <br/> prevDiff: ${prevDiff} <br/>`;
 
-    // // Cache the distance for the next move event
-    // prevDiff = curDiff;
+    // Cache the distance for the next move event
+    prevDiff = curDiff;
   }
 }
 
@@ -52,7 +54,7 @@ function pointerup_handler(ev) {
   remove_event(ev);
 
   // If the number of pointers down is less than two then reset diff tracker
-  if (evCache.length < 2) prevDiff = 20;
+  if (evCache.length < 2) prevDiff = -1;
 }
 
 function remove_event(ev) {
